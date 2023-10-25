@@ -7,33 +7,28 @@
     <title>Tu Tienda Virtual</title>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="/">Tu Tienda Virtual</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="/">Inicio</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/productos">Productos</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/carrito">Carrito</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/contacto">Contacto</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/admin">Admin</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
 
- 
+    <form action="{{ route('productos.store') }}" method="POST">
+    @csrf
+
+    <label for="nombre">Nombre:</label>
+    <input type="text" name="nombre" required>
+
+    <label for="descripcion">Descripción:</label>
+    <textarea name="descripcion" required></textarea>
+
+    <label for="imagen">URL de la imagen:</label>
+    <input type="text" name="imagen" required>
+
+    <label for="precio_original">Precio original:</label>
+    <input type="number" name="precio_original" required>
+
+    <label for="precio_oferta">Precio en oferta:</label>
+    <input type="number" name="precio_oferta" required>
+
+    <button type="submit">Agregar Producto</button>
+</form>
+
 
     <footer class="bg-dark text-light mt-5 p-4">
     <div class="container">

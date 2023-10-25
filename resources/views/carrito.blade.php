@@ -18,7 +18,7 @@
                     <a class="nav-link" href="/">Inicio</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/productos">Productos</a>
+                    <a class="nav-link" href="/producto1">Productos</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/carrito">Carrito</a>
@@ -34,7 +34,7 @@
     </nav>
 
 
-    
+
     <footer class="bg-dark text-light mt-5 p-4">
     <div class="container">
         <div class="row">
