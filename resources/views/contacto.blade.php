@@ -33,7 +33,8 @@
         </div>
     </nav>
 
-    <h1>Bienvenido a mi tienda virtual</h1>
+
+    
 
     <footer class="bg-dark text-light mt-5 p-4">
     <div class="container">
