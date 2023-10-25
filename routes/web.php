@@ -36,3 +36,7 @@ Route::get('/contacto', function () {
 Route::get('/admin', function () {
     return view('admin');
 });
+
+use App\Http\Controllers\ProductosController;
+
+Route::get('/productos', [ProductosController::class, 'index'])->name('productos.index');
