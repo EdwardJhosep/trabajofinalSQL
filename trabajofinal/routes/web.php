@@ -45,3 +45,6 @@ Route::get('/producto', [ProductController::class, 'index3'])->name('producto');
 // editar
 Route::put('/productos/actualizar/{id}', [ProductController::class, 'update'])->name('productos.actualizar');
 Route::delete('/productos/eliminar/{id}', [ProductController::class, 'destroy'])->name('productos.eliminar');
+//cerrar sesion 
+// Ruta para cerrar sesión
+Route::get('/logout', 'AdminController@logout')->name('logout');

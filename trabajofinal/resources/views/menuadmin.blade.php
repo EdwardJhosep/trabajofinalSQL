@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="{{ route('menuadmin') }}">Administrador</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -23,6 +23,8 @@
                 </li>
             </ul>
         </div>
+ 
+        <a class="btn btn-danger" href="{{ route('welcome') }}">Cerrar Sesión</a>
     </nav>
     <div class="container mt-4">
         <!-- Coloca aquí el contenido específico para el menú del administrador -->

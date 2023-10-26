@@ -46,4 +46,17 @@ class AdminController extends Controller
         // Lógica para la vista de editar producto (si es necesario)
         return view('producto');
     }
+
+    public function logout()
+    {
+       
+    Auth::logout();
+    return redirect()->route('welcome')
+        ->withHeaders([
+            'Cache-Control' => 'no-store, no-cache, must-revalidate, max-age=0',
+            'Pragma' => 'no-cache',
+            'Expires' => 'Sat, 01 Jan 2000 00:00:00 GMT',
+        ]);
+    }
+    
 }
