@@ -5,9 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Producto extends Model
+class Product extends Model
 {
     use HasFactory;
+
+    protected $table = 'productos'; // Especifica el nombre de la tabla
 
     protected $fillable = [
         'nombre',
@@ -15,5 +17,8 @@ class Producto extends Model
         'imagen',
         'precio_original',
         'precio_oferta',
+        'existencias',
+        'categoria',
+        'proveedor',
     ];
 }
