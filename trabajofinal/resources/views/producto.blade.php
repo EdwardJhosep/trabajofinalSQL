@@ -27,13 +27,31 @@
     <div class="container mt-4">
         <!-- Coloca aquí el contenido específico para el menú del administrador -->
     </div>
+    @if(session('success'))
+<div class="alert alert-success">
+    {{ session('success') }}
+</div>
+@endif
 
-    <h1>Lista de Productos</h1>
-    <table>
+@if(session('error'))
+<div class="alert alert-danger">
+    {{ session('error') }}
+</div>
+@endif
+
+<h1>Lista de Productos</h1>
+<div class="table-responsive"> <!-- Agregamos la clase para hacer la tabla responsive -->
+    <table class="table table-bordered table-striped">
         <thead>
             <tr>
                 <th>Nombre</th>
                 <th>Descripción</th>
+                <th>Imagen</th>
+                <th>Precio Original</th>
+                <th>Precio de Oferta</th>
+                <th>Existencias</th>
+                <th>Categoría</th>
+                <th>Proveedor</th>
                 <th>Acciones</th>
             </tr>
         </thead>
@@ -42,13 +60,21 @@
             <tr>
                 <td>{{ $product->nombre }}</td>
                 <td>{{ $product->descripcion }}</td>
+                <td><img src="{{ $product->imagen }}" alt="Imagen del producto" width="100"></td>
+                <td>${{ $product->precio_original }}</td>
+                <td>${{ $product->precio_oferta }}</td>
+                <td>{{ $product->existencias }}</td>
+                <td>{{ $product->categoria }}</td>
+                <td>{{ $product->proveedor }}</td>
                 <td>
-                    <a href="{{ route('productos.editar', $product->id) }}">Editar</a>
+                    <a href="{{ route('productos.editar', $product->id) }}" class="btn btn-primary">Editar</a>
                 </td>
             </tr>
             @endforeach
         </tbody>
     </table>
+</div>
+
 
     <!-- Scripts de Bootstrap y jQuery -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
