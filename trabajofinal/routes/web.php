@@ -26,7 +26,6 @@ use App\Http\Controllers\ProductController;
 // Ruta para mostrar el formulario de agregar productos
 Route::get('/productos/agregar', [ProductController::class, 'showProductForm'])->name('productos.agregar');
 
-// Ruta para procesar la solicitud de agregar productos
 Route::post('/productos/agregar', [ProductController::class, 'addProduct'])->name('productos.guardar');
 
 
@@ -36,6 +35,13 @@ Route::get('/productos', [ProductController::class, 'index'])->name('productos.i
 Route::get('/productos/editar/{id}', [ProductController::class, 'edit'])->name('productos.editar');
 Route::put('/productos/actualizar/{id}', [ProductController::class, 'update'])->name('productos.actualizar');
 
+
+//menus 
 Route::get('/productos', [ProductController::class, 'index'])->name('productos');
 
 Route::get('/producto', [ProductController::class, 'index3'])->name('producto');
+
+
+// editar
+Route::put('/productos/actualizar/{id}', [ProductController::class, 'update'])->name('productos.actualizar');
+Route::delete('/productos/eliminar/{id}', [ProductController::class, 'destroy'])->name('productos.eliminar');

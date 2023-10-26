@@ -80,6 +80,18 @@ class ProductController extends Controller
 
         $product->update($request->all());
 
-        return redirect()->route('producto.index')->with('success', 'Producto actualizado con éxito.');
+        return redirect()->route('producto')->with('success', 'Producto actualizado con éxito.');
+    }
+
+    public function destroy($id)
+    {
+        $product = Product::find($id);
+
+        if ($product) {
+            $product->delete();
+            return redirect()->route('producto')->with('success', 'Producto eliminado con éxito.');
+        } else {
+            return redirect()->route('producto')->with('error', 'No se pudo encontrar el producto.');
+        }
     }
 }
