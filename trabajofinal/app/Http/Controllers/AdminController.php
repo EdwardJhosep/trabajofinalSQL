@@ -41,9 +41,9 @@ class AdminController extends Controller
         return view('agregar');
     }
 
-    public function editar()
+    public function producto()
     {
         // Lógica para la vista de editar producto (si es necesario)
-        return view('editar');
+        return view('producto');
     }
 }

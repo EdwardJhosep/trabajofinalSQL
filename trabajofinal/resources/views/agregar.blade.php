@@ -19,7 +19,7 @@
                     <a class="nav-link" href="{{ route('agregar') }}">Agregar Producto</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('editar') }}">Editar Producto</a>
+                    <a class="nav-link" href="{{ route('producto') }}">Editar Producto</a>
                 </li>
             </ul>
         </div>

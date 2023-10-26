@@ -44,26 +44,28 @@ class ProductController extends Controller
 
 
 
-
-
-    public function editProduct($id)
+    public function index()
     {
-        $product = Product::find($id);
+        $products = Product::all();
+        return view('productos', compact('products'));
 
-        if (!$product) {
-            return redirect()->route('productos.index')->with('error', 'Producto no encontrado');
-        }
+    }
+    public function index3()
+    {
+        $products = Product::all();
+        return view('producto', compact('products'));
 
-        return view('productos.editar', compact('product'));
     }
 
-    public function updateProduct(Request $request, $id)
+    public function edit($id)
     {
         $product = Product::find($id);
+        return view('editar', compact('product'));
+    }
 
-        if (!$product) {
-            return redirect()->route('productos.index')->with('error', 'Producto no encontrado');
-        }
+    public function update(Request $request, $id)
+    {
+        $product = Product::find($id);
 
         $request->validate([
             'nombre' => 'required|string',
@@ -76,29 +78,8 @@ class ProductController extends Controller
             'proveedor' => 'required|string',
         ]);
 
-        $product->update([
-            'nombre' => $request->input('nombre'),
-            'descripcion' => $request->input('descripcion'),
-            'imagen' => $request->input('imagen'),
-            'precio_original' => $request->input('precio_original'),
-            'precio_oferta' => $request->input('precio_oferta'),
-            'existencias' => $request->input('existencias'),
-            'categoria' => $request->input('categoria'),
-            'proveedor' => $request->input('proveedor'),
-        ]);
+        $product->update($request->all());
 
-        return redirect()->route('productos.index')->with('success', 'Producto actualizado con éxito.');
-    }
-
-    public function deleteProduct($id)
-    {
-        $product = Product::find($id);
-
-        if (!$product) {
-            return redirect()->route('productos.index')->with('error', 'Producto no encontrado');
-        }
-
-        $product->delete();
-        return redirect()->route('productos.index')->with('success', 'Producto eliminado con éxito.');
+        return redirect()->route('producto.index')->with('success', 'Producto actualizado con éxito.');
     }
 }

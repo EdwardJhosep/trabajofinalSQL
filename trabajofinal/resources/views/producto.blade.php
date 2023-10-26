@@ -28,6 +28,28 @@
         <!-- Coloca aquí el contenido específico para el menú del administrador -->
     </div>
 
+    <h1>Lista de Productos</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($products as $product)
+            <tr>
+                <td>{{ $product->nombre }}</td>
+                <td>{{ $product->descripcion }}</td>
+                <td>
+                    <a href="{{ route('productos.editar', $product->id) }}">Editar</a>
+                </td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
+
     <!-- Scripts de Bootstrap y jQuery -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>

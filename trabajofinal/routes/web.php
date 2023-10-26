@@ -6,7 +6,6 @@ use App\Http\Controllers\pr;
 
 // Rutas públicas
 Route::view('/', 'welcome')->name('welcome');
-Route::view('/productos', 'productos')->name('productos');
 Route::view('/ofertas', 'ofertas')->name('ofertas');
 Route::view('/contacto', 'contacto')->name('contacto');
 
@@ -17,7 +16,7 @@ Route::get('/menuadmin', [AdminController::class, 'menuAdmin'])->name('menuadmin
 
 Route::get('/menuadmin', [AdminController::class, 'menuAdmin'])->name('menuadmin'); // Página del menú del administrador
 Route::get('/agregar', [AdminController::class, 'agregar'])->name('agregar'); // Vista para agregar producto
-Route::get('/editar', [AdminController::class, 'editar'])->name('editar'); // Vista para editar producto
+
 
 
 Route::post('/productos/agregar', 'ProductController@addProduct')->name('productos.agregar');
@@ -31,6 +30,12 @@ Route::get('/productos/agregar', [ProductController::class, 'showProductForm'])-
 Route::post('/productos/agregar', [ProductController::class, 'addProduct'])->name('productos.guardar');
 
 
-Route::get('/productos/editar/{id}', [ProductController::class, 'editProduct'])->name('productos.editar');
-Route::put('/productos/actualizar/{id}', [ProductController::class, 'updateProduct'])->name('productos.actualizar');
-Route::delete('/productos/eliminar/{id}', [ProductController::class, 'deleteProduct'])->name('productos.eliminar');
+
+
+Route::get('/productos', [ProductController::class, 'index'])->name('productos.index');
+Route::get('/productos/editar/{id}', [ProductController::class, 'edit'])->name('productos.editar');
+Route::put('/productos/actualizar/{id}', [ProductController::class, 'update'])->name('productos.actualizar');
+
+Route::get('/productos', [ProductController::class, 'index'])->name('productos');
+
+Route::get('/producto', [ProductController::class, 'index3'])->name('producto');
