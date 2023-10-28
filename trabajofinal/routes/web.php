@@ -48,3 +48,15 @@ Route::delete('/productos/eliminar/{id}', [ProductController::class, 'destroy'])
 //cerrar sesion 
 // Ruta para cerrar sesión
 Route::get('/logout', 'AdminController@logout')->name('logout');
+
+
+use App\Http\Controllers\ProductoController;
+
+Route::get('/productos', [ProductoController::class, 'index'])->name('productos');
+Route::get('/ofertas', [ProductoController::class, 'ofertas'])->name('ofertas');
+
+
+use App\Http\Controllers\ComentarioController;
+
+Route::get('/contacto', [ComentarioController::class, 'showForm'])->name('contacto');
+Route::post('/contacto', [ComentarioController::class, 'store'])->name('comentarios.store');

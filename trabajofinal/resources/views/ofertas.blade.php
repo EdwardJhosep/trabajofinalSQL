@@ -38,8 +38,71 @@
         </nav>
     </header>
     <main>
-        <!-- Contenido principal de tu tienda en línea irá aquí -->
-    </main>
+    <h1>Ofertas</h1>
+    @foreach ($productos as $producto)
+        @php
+            $descuentoPorcentaje = ($producto->precio_original - $producto->precio_oferta) / $producto->precio_original * 100;
+        @endphp
+
+        @if ($descuentoPorcentaje > 0)
+            <div class="product">
+                <div class="discount-badge">
+                    Descuento: {{ round($descuentoPorcentaje, 2) }}%
+                </div>
+                <img src="{{ $producto->imagen }}" alt="{{ $producto->nombre }}">
+                <p>
+                    <strong>Nombre:</strong> {{ $producto->nombre }}<br>
+                    <strong>Descripción:</strong> {{ $producto->descripcion }}<br>
+                    <strong>Precio Original:</strong> ${{ $producto->precio_original }}<br>
+                    <strong>Precio de Oferta:</strong> ${{ $producto->precio_oferta }}<br>
+                    <strong>Categoría:</strong> {{ $producto->categoria }}<br>
+                    <strong>Proveedor:</strong> {{ $producto->proveedor }}
+                </p>
+                <a href="#" class="buy-button">Comprar</a>
+            </div>
+        @endif
+    @endforeach
+</main>
+
+    <style>
+               .product {
+            display: inline-block;
+            margin: 20px;
+            text-align: center;
+            position: relative;
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+
+        .product img {
+            max-width: 200px;
+            max-height: 200px;
+        }
+
+        .discount-badge {
+            background-color: red;
+            color: white;
+            position: absolute;
+            top: 0;
+            right: 0;
+            padding: 5px;
+        }
+
+        .buy-button {
+            display: block;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .buy-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
 
     <!-- Agrega los scripts de Bootstrap (jQuery y Popper.js son requeridos) -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
