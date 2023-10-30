@@ -14,21 +14,17 @@ class AdminController extends Controller
 
     public function loginAdmin(Request $request)
     {
-        // Validar los datos del formulario de inicio de sesión
-        $this->validate($request, [
-            'email' => 'required|email',
-            'password' => 'required',
-        ]);
-
-        // Intentar iniciar sesión
-        if (!Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
-            // Si la autenticación es exitosa, redirigir a la página del menú del administrador
+        if ($request->email === 'juanantee@gmail.com' && $request->password === '123') {
+            // Si las credenciales coinciden, inicia sesión
+            Auth::loginUsingId(1); // Reemplaza "1" con el ID del usuario que deseas autenticar
             return redirect()->route('menuadmin');
         }
-
-        // Si la autenticación falla, redirigir de vuelta al formulario de inicio de sesión con un mensaje de error
+    
+        // Si las credenciales no coinciden, redirige al formulario de inicio de sesión con un mensaje de error
         return redirect()->route('admin')->with('error', 'Credenciales incorrectas');
     }
+    
+
 
     public function menuAdmin()
     {

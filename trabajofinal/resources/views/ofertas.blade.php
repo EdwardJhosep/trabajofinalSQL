@@ -103,6 +103,29 @@
             background-color: #0056b3;
         }
     </style>
+    <footer class="bg-dark text-light mt-5 p-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h3>Contacto</h3>
+                    <p>Si tienes alguna pregunta o necesitas ayuda, no dudes en contactarnos:</p>
+                    <ul>
+                        <li>Correo electrónico: info@tu-tienda.com</li>
+                        <li>Teléfono: (123) 456-7890</li>
+                        <li>Dirección: Calle Principal, Ciudad</li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <h3>Enlaces útiles</h3>
+                    <ul>
+                        <li><a href="/terminos">Términos y condiciones</a></li>
+                        <li><a href="/privacidad">Política de privacidad</a></li>
+                        <li><a href="/devoluciones">Política de devoluciones</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
 
     <!-- Agrega los scripts de Bootstrap (jQuery y Popper.js son requeridos) -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
