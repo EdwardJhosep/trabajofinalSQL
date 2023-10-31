@@ -55,6 +55,17 @@ use App\Http\Controllers\ProductoController;
 Route::get('/productos', [ProductoController::class, 'index'])->name('productos');
 Route::get('/ofertas', [ProductoController::class, 'ofertas'])->name('ofertas');
 Route::get('/venta/{id}', [ProductoController::class, 'mostrarCompra'])->name('venta');
+Route::get('/venta1/{id}', [ProductoController::class, 'mostrarCompra1'])->name('venta1');
 
+use App\Http\Controllers\ClienteController;
 
+// Ruta para mostrar el formulario de registro de cliente
+Route::get('/clientes/create', [ClienteController::class, 'create'])->name('clientes.create');
 
+// Ruta para procesar el formulario de registro de cliente
+Route::post('/clientes', [ClienteController::class, 'store'])->name('clientes.store');
+Route::get('/venta/{producto}/{cliente}', 'VentaController@comprar')->name('venta.comprar');
+
+use App\Http\Controllers\VentaController;
+
+Route::post('/confirmar-compra', [VentaController::class, 'confirmarCompra'])->name('confirmarCompra');

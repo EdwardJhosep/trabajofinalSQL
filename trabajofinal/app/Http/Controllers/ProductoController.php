@@ -18,7 +18,11 @@ class ProductoController extends Controller
     {
         return view('venta');
     }
-    
+    public function mostrarCompra1()
+    {
+        $producto = Producto::find(1); // Reemplaza 1 con el ID del producto que deseas mostrar
+        return view('venta1', ['producto' => $producto]);
+    }
     
 
     public function ofertas()
@@ -27,7 +31,5 @@ class ProductoController extends Controller
         return view('ofertas', ['productos' => $productos]);
     }
 
-
-    
 
 }
