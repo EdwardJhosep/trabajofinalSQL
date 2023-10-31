@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio de Sesión</title>
+    <title>Document</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -52,20 +52,39 @@
     </style>
 </head>
 <body>
-    <form method="POST" action="{{ route('login') }}">
-        @csrf
+    <!-- resources/views/auth/register.blade.php -->
 
-        <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" name="email" id="email" required>
-        </div>
+    <form method="POST" action="{{ route('register') }}">
+    @csrf
 
-        <div class="form-group">
-            <label for="password">Contraseña</label>
-            <input type="password" name="password" id="password" required>
-        </div>
+    <div class="form-group">
+        <label for="nombre">Nombre</label>
+        <input type="text" name="nombre" id="nombre" required>
+    </div>
 
-        <button type="submit">Iniciar Sesión</button>
-    </form>
+    <div class="form-group">
+        <label for="direccion">Dirección</label>
+        <input type="text" name="direccion" id="direccion" required>
+    </div>
+
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" required>
+    </div>
+
+    <div class="form-group">
+        <label for="password">Contraseña</label>
+        <input type="password" name="password" id="password" required>
+    </div>
+
+    <div class="form-group">
+        <label for="telefono">Teléfono</label>
+        <input type="text" name="telefono" id="telefono" required>
+    </div>
+
+    <button type="submit">Registrar</button>
+</form>
+
+
 </body>
 </html>

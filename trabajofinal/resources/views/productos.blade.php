@@ -56,7 +56,9 @@
                         <p><strong>Precio Original:</strong> ${{ $producto->precio_original }}</p>
                         <p><strong>Precio de Oferta:</strong> ${{ $producto->precio_oferta }}</p>
                         <p><strong>Proveedor:</strong> {{ $producto->proveedor }}</p>
-                        <a href="#" class="product-buy-button">Comprar</a>
+                        <a href="{{ route('venta', ['id' => $producto->id]) }}">Comprar</a>
+
+
                     </div>
                 </div>
             @endforeach

@@ -14,11 +14,20 @@ class ProductoController extends Controller
         return view('productos', ['productos' => $productos]);
     }
    
-
+    public function mostrarCompra()
+    {
+        return view('venta');
+    }
+    
+    
 
     public function ofertas()
     {
         $productos = Producto::where('precio_original', '>', 'precio_oferta')->get();
         return view('ofertas', ['productos' => $productos]);
     }
+
+
+    
+
 }

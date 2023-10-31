@@ -3,11 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio de Sesión</title>
+    <title>Formulario de Venta</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
+        }
+        
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        ul li {
+            display: inline;
+            margin-right: 10px;
+        }
+        
+        ul li a {
+            text-decoration: none;
+        }
+        
+        h1 {
+            text-align: center;
         }
         
         form {
@@ -52,20 +70,22 @@
     </style>
 </head>
 <body>
-    <form method="POST" action="{{ route('login') }}">
+    <ul>
+        <li><a href="{{ route('login') }}">Iniciar Sesión</a></li>
+        <li><a href="{{ route('welcome') }}">volver</a></li>
+        <li><a href="{{ route('register') }}">Registrarse</a></li>
+    </ul>
+    <h1>Formulario de Venta</h1>
+    
+    <form method="POST" action="{{ route('guardar_venta') }}">
         @csrf
 
         <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" name="email" id="email" required>
+            <label for="cantidad">Cantidad</label>
+            <input type="text" name="cantidad" id="cantidad" required>
         </div>
 
-        <div class="form-group">
-            <label for="password">Contraseña</label>
-            <input type="password" name="password" id="password" required>
-        </div>
-
-        <button type="submit">Iniciar Sesión</button>
+        <button type="submit">Guardar Venta</button>
     </form>
 </body>
 </html>

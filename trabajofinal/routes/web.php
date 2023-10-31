@@ -54,9 +54,18 @@ use App\Http\Controllers\ProductoController;
 
 Route::get('/productos', [ProductoController::class, 'index'])->name('productos');
 Route::get('/ofertas', [ProductoController::class, 'ofertas'])->name('ofertas');
+Route::get('/venta/{id}', [ProductoController::class, 'mostrarCompra'])->name('venta');
 
 
-use App\Http\Controllers\ComentarioController;
 
-Route::get('/contacto', [ComentarioController::class, 'showForm'])->name('contacto');
-Route::post('/contacto', [ComentarioController::class, 'store'])->name('comentarios.store');
+
+use App\Http\Controllers\AuthController;
+Route::get('/register', [AuthController::class, 'showRegistrationForm'])->name('register');
+Route::post('/register', [AuthController::class, 'register']);
+Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [AuthController::class, 'login']);
+Route::get('/welcome', [AuthController::class, 'showLoginForm2'])->name('welcome');
+
+Route::get('/venta', [VentaController::class, 'mostrarFormularioVenta'])->name('formulario_venta');
+Route::post('/guardar-venta', [VentaController::class, 'guardarVenta'])->name('guardar_venta');
+Route::get('/ventas', [VentaController::class, 'mostrarVentas'])->name('mostrar_ventas');
