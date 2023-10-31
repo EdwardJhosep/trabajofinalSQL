@@ -58,14 +58,3 @@ Route::get('/venta/{id}', [ProductoController::class, 'mostrarCompra'])->name('v
 
 
 
-
-use App\Http\Controllers\AuthController;
-Route::get('/register', [AuthController::class, 'showRegistrationForm'])->name('register');
-Route::post('/register', [AuthController::class, 'register']);
-Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
-Route::post('/login', [AuthController::class, 'login']);
-Route::get('/welcome', [AuthController::class, 'showLoginForm2'])->name('welcome');
-
-Route::get('/venta', [VentaController::class, 'mostrarFormularioVenta'])->name('formulario_venta');
-Route::post('/guardar-venta', [VentaController::class, 'guardarVenta'])->name('guardar_venta');
-Route::get('/ventas', [VentaController::class, 'mostrarVentas'])->name('mostrar_ventas');
