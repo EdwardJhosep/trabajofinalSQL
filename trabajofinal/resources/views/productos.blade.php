@@ -29,6 +29,7 @@
 <li class="nav-item">
     <a class="nav-link" href="{{ route('contacto') }}">Contacto</a>
 </li>
+
 <li class="nav-item">
     <a class="nav-link" href="{{ route('admin') }}">Admin</a>
 </li>
@@ -56,8 +57,8 @@
                         <p><strong>Precio Original:</strong> ${{ $producto->precio_original }}</p>
                         <p><strong>Precio de Oferta:</strong> ${{ $producto->precio_oferta }}</p>
                         <p><strong>Proveedor:</strong> {{ $producto->proveedor }}</p>
-                        <a href="{{ route('venta1', ['id' => $producto->id]) }}"> Comprar</a>
-                        <a href="{{ route('venta', ['id' => $producto->id]) }}">registrate si aun no lo has echo</a>
+                        <a href="{{ route('venta', ['productId' => $producto->id]) }}">comprar</a>
+
 
 
                     </div>

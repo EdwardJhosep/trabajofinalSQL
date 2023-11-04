@@ -10,14 +10,13 @@ class CreateVentasTable extends Migration
     {
         Schema::create('ventas', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('cliente_id');
-            $table->unsignedBigInteger('producto_id');
-            $table->integer('cantidad');
+            $table->unsignedBigInteger('product_id');
+            $table->foreign('product_id')->references('id')->on('productos');
+            $table->string('correo');
+            $table->string('direccion');
+            $table->string('nombre');
+            // Otros campos de la tabla de ventas
             $table->timestamps();
-
-            // Definir las claves foráneas
-            $table->foreign('cliente_id')->references('id')->on('clientes');
-            $table->foreign('producto_id')->references('id')->on('productos');
         });
     }
 

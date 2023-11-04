@@ -1,41 +1,95 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Registro de Cliente</title>
+    <title>Formulario de Compra</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .form-container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+
+        .alert-success {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+
+        input[type="text"],
+        input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .back-button {
+            background-color: #ccc;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+    </style>
 </head>
 <body>
-    <h2>Registro de Cliente</h2>
-    <form method="POST" action="{{ route('clientes.store') }}">
-        @csrf <!-- Agrega el campo csrf para proteger contra ataques CSRF -->
+    <h1>Formulario de Compra</h1>
+    @if(session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
 
-        <div class="form-group">
+    <div class="form-container">
+        <form method="POST" action="{{ route('realizar_compra', ['productId' => $product->id]) }}">
+            @csrf
+            <label for="correo">Correo Electrónico:</label>
+            <input type="email" name="correo" id="correo" required>
+
+            <label for="direccion">Dirección de Envío:</label>
+            <input type="text" name="direccion" id="direccion" required>
+
             <label for="nombre">Nombre:</label>
-            <input type="text" name="nombre" id="nombre">
-        </div>
+            <input type="text" name="nombre" id="nombre" required>
 
-        <div class="form-group">
-            <label for="correo">Correo:</label>
-            <input type="email" name="correo" id="correo">
-        </div>
+            <!-- Puedes agregar más campos según tus necesidades -->
 
-        <div class="form-group">
-            <label for="contrasena">Contraseña:</label>
-            <input type="password" name="contrasena" id="contrasena">
-        </div>
+            <button type="submit">Comprar</button>
+        </form>
 
-        <div class="form-group">
-            <label for="direccion">Dirección:</label>
-            <input type="text" name="direccion" id="direccion">
-        </div>
-
-        <div class="form-group">
-            <label for="telefono">Teléfono:</label>
-            <input type="text" name="telefono" id="telefono">
-        </div>
-        <button type="submit">Guardar Información</button>
-        <li class="nav-item">
-    <a class="nav-link" href="{{ route('productos') }}">Productos</a>
-</li>
-    </form>
+        <a href="{{ route('productos') }}" class="back-button">Volver a Productos</a>
+    </div>
 </body>
 </html>

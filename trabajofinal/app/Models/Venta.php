@@ -1,25 +1,22 @@
 <?php
+
+
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Venta extends Model
 {
-    protected $table = 'ventas';
+    use HasFactory;
+
+    protected $table = 'ventas'; // Nombre de la tabla en la base de datos
 
     protected $fillable = [
-        'producto_id',
-        'cantidad',
-        'cliente_id', // Cambiar a 'cliente_id'
+        'correo', 
+        'direccion', 
+        'nombre', // Lista de campos que puedes llenar
+        // Otros campos si los tienes
     ];
-
-    public function producto()
-    {
-        return $this->belongsTo(Producto::class, 'producto_id', 'id');
-    }
-
-    public function cliente()
-    {
-        return $this->belongsTo(NuevoCliente::class, 'cliente_id', 'id'); // Cambiar a 'cliente_id'
-    }
+    
 }

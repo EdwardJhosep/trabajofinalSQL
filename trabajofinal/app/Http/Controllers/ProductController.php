@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
+use App\Models\Venta;
 use App\Models\Product; // Asegúrate de importar el modelo Product
 
 class ProductController extends Controller
@@ -94,4 +95,36 @@ class ProductController extends Controller
             return redirect()->route('producto')->with('error', 'No se pudo encontrar el producto.');
         }
     }
+    public function addVenta(Request $request, $productId)
+    {
+        // Valida los datos ingresados por el usuario (correo, dirección, nombre u otros campos necesarios)
+        $request->validate([
+            'correo' => 'required|string|email',
+            'direccion' => 'required|string',
+            'nombre' => 'required|string',
+        ]);
+    
+        // Aquí puedes realizar la lógica para guardar la venta en la base de datos
+        // Puedes utilizar los datos validados y otros campos necesarios
+        $correoUsuario = $request->input('correo');
+        $direccionUsuario = $request->input('direccion');
+        $nombreUsuario = $request->input('nombre');
+    
+        // Crea una nueva venta
+        $venta = new Venta();
+        $venta->correo = $correoUsuario;
+        $venta->direccion = $direccionUsuario;
+        $venta->nombre = $nombreUsuario;
+        $venta->product_id = $productId; // Asigna el ID del producto
+    
+        // Puedes agregar más campos de la venta si es necesario
+    
+        // Guarda la venta en la base de datos
+        $venta->save();
+    
+        // Redirige al usuario a la página de confirmación de compra o a donde desees
+        return redirect()->route('venta', ['productId' => $productId])->with('success', 'Compra realizada con éxito.');
+
+    }
+    
 }

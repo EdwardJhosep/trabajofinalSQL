@@ -26,15 +26,45 @@
  
         <a class="btn btn-danger" href="{{ route('welcome') }}">Cerrar Sesión</a>
     </nav>
-    <div class="container mt-4">
-        <!-- Coloca aquí el contenido específico para el menú del administrador -->
-    </div>
+<!-- ... Encabezado y otros elementos ... -->
 
+<div class="container mt-4">
+    <h1>Lista de Ventas</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID de Venta</th>
+                <th>Producto</th>
+                <th>Correo</th>
+                <th>Dirección</th>
+                <th>Nombre</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($ventas as $venta)
+                <tr>
+                    <td>{{ $venta->id }}</td>
+                    <td>
+                        @if ($venta->producto)
+                            {{ $venta->producto->nombre }}
+                            <a href="{{ route('menuadmin', ['productId' => $venta->product_id]) }}">Ver Detalles</a>
+                        @else
+                            Producto no disponible
+                        @endif
+                    </td>
+                    <td>{{ $venta->correo }}</td>
+                    <td>{{ $venta->direccion }}</td>
+                    <td>{{ $venta->nombre }}</td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
+</div>
+
+<!-- ... Otros elementos y scripts ... -->
 
 
     <!-- Scripts de Bootstrap y jQuery -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</body>
-</html>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap
